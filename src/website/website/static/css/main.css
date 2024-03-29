@@ -8,6 +8,28 @@ body {
   overflow-x: hidden;
 }
 
+.scroll-to-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(20, 213, 99, 0.5); 
+  color: white;
+  border: none;
+  border-radius: 20%; 
+  padding: 10px;
+  cursor: pointer;
+  display: none; 
+}
+
+.scroll-to-top-btn i {
+  font-size: 1.5rem; 
+}
+
+.scroll-to-top-btn:hover {
+  background-color: #14D563; 
+  border: none;
+}
+
 ::-webkit-scrollbar {
   width: 15px; 
 }
