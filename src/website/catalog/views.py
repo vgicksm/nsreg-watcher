@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseNotFound
+from django.http import HttpResponseNotFound, HttpResponseRedirect
 from django.db.models import Q
 
 from .models import Price, Registrator, TeamMember
@@ -71,12 +71,14 @@ def about(request):
         if form.is_valid():
             # Логика обработки из формы обратной связи
             # отправка сообщения по почте админу.
-            # TODO
+
             name = request.POST.get("name")
             contact = request.POST.get("contact")
             speciality = request.POST.get("speciality")
             message = request.POST.get("message")
             send_join_team_mail.delay(name, contact, speciality, message)
+
+            return HttpResponseRedirect('/')
 
     else:
         form = ContactForm()
