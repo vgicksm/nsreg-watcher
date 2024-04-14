@@ -14,7 +14,7 @@ TOPIC_SUPPORT_ID = int(os.environ["TOPIC_SUPPORT_ID"])    # 1435
 
 router = Router()
 bot = Bot(TOKEN, parse_mode="markdown")
-
+bot_is_done = False
 
 def cut_log(log: str) -> str:
     """
@@ -48,6 +48,7 @@ async def command_start_handler(*args, **kwargs) -> None:
             message_thread_id=TOPIC_SUPPORT_ID,
             text=f"Спайдеры завершили свою работу {spider_1}\nError logs:\n```{error_log}```"
         )
+        bot_is_done = True
     except subprocess.CalledProcessError as error:
         spider_2 = r"/╲/\╭[ ☉ ﹏ ☉ ]╮/\╱\ "
         await bot.send_message(
@@ -62,8 +63,10 @@ async def main() -> None:
     dp.include_router(router)
 
     await command_start_handler()
-    await dp.start_polling(bot)
 
+    # Only start polling if the bot should still be active
+    if not bot_is_done:
+        await dp.start_polling(bot)
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
