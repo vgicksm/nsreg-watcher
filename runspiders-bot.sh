@@ -6,6 +6,6 @@ fi
 
 source /home/ecodomen/ecodomen-dev/env/bin/activate
 cd /home/ecodomen/ecodomen-dev/
-pythton3 /home/ecodomen/ecodomen-dev/src/telegram_bot/__main__.py
+python3 /home/ecodomen/ecodomen-dev/src/telegram_bot/__main__.py
 
 deactivate
