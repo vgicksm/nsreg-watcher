@@ -5,7 +5,7 @@ if [ -f /home/ecodomen/ecodomen-dev/.env ]; then
   export $(echo $(cat /home/ecodomen/ecodomen-dev/.env | sed 's/#.*//g'| xargs) | envsubst)
 fi
 
-source /home/ecodomen/ecodomen-dev/env/bin/activate
+. /home/ecodomen/ecodomen-dev/env/bin/activate
 
 ERROR_LOG="$(cd "$(dirname "logs/grabber_errors.log")"; pwd)/$(basename "logs/grabber_errors.log")"
 LOG_LEVEL=ERROR
