@@ -7,8 +7,8 @@ import subprocess
 import os
 
 TOKEN = os.environ["BOT_TOKEN"]
-ERROR_LOGS_PATH = "/home/ecodomen/ecodomen-dev/logs/grabber_errors.log"
-SPIDERS_SCRIPT_PATH = "/home/ecodomen/ecodomen-dev/compose/scrapy/scrapy-dev.sh"
+ERROR_LOGS_PATH = "logs/grabber_errors.log"
+SPIDERS_SCRIPT_PATH = "compose/scrapy/scrapy-dev.sh"
 CHAT_ID = os.environ["CHAT_ID"]
 TOPIC_SUPPORT_ID = int(os.environ["TOPIC_SUPPORT_ID"])    # 1435
 
