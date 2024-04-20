@@ -16,6 +16,7 @@ router = Router()
 bot = Bot(TOKEN, parse_mode="markdown")
 bot_is_done = False
 
+
 def cut_log(log: str) -> str:
     """
     Make log shorter if len > 4000
@@ -48,7 +49,7 @@ async def command_start_handler(*args, **kwargs) -> None:
             message_thread_id=TOPIC_SUPPORT_ID,
             text=f"Спайдеры завершили свою работу {spider_1}\nError logs:\n```{error_log}```"
         )
-        bot_is_done = True
+
     except subprocess.CalledProcessError as error:
         spider_2 = r"/╲/\╭[ ☉ ﹏ ☉ ]╮/\╱\ "
         await bot.send_message(
