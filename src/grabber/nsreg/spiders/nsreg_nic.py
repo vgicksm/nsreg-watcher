@@ -24,7 +24,7 @@ class NsregWebnamesSpider(scrapy.Spider):
             },
             path={
                 'price_reg': '/html/body/div[1]/div/div/section/div[2]/div/div/p[4]/strong/text()',
-                'price_prolong': '/html/body/div[1]/div/div/div[1]/main/div[1]/div[2]/div[2]/div/div[1]/div[2]/div[2]/span/text()',
+                'price_prolong': '/html/body/div[1]/div/div/div[1]/main/div[1]/div[2]/div[1]/div/div[1]/div[2]/div[2]/span/text()',
                 'price_change': '/html/body/div[1]/div/div/section/div[2]/div/div/p[6]/strong/text()',
             },
         )

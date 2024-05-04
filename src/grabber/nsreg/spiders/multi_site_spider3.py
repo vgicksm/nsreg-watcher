@@ -5,6 +5,8 @@
 Адреса сайтов: https://bitnames.ru, https://betnames.ru, https://parpro.ru,
 http://regeon.ru, https://regiondomains.ru, https://tapereg.ru,
 
+https://parpro.ru - Больше не существует
+
 """
 
 import scrapy
@@ -18,7 +20,6 @@ class MultiSiteSpider3(scrapy.Spider):
     start_urls = (
         'https://bitnames.ru/#features-2',
         'https://betnames.ru/#features-2',
-        'https://parpro.ru/#features-2',
         'http://regeon.ru/#features-2',
         'https://regiondomains.ru/#features-2',
         'https://tapereg.ru/#features-2'
@@ -26,7 +27,6 @@ class MultiSiteSpider3(scrapy.Spider):
     allowed_domains = (
         'bitnames.ru',
         'betnames.ru',
-        'parpro.ru',
         'regeon.ru',
         'regiondomains.ru',
         'tapereg.ru'
@@ -34,7 +34,6 @@ class MultiSiteSpider3(scrapy.Spider):
     site_names = (
         'ООО «БИТНЭЙМС»',
         'ООО «Бэтнеймс»',
-        'ООО «Пар»',
         'ООО «РЕГЕОН»',
         'ООО «Регион»',
         'ООО «СМП №2»'
