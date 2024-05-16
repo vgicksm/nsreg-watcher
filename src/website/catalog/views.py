@@ -71,7 +71,7 @@ def registrator_list(request):
 
     companies = Price.objects.filter(id__in=companies).order_by(*sort_by_lst)
 
-    if search_by_name_only:
+    if search and search_by_name_only:
         sorted_companies_lambda = sorted(
             filter(lambda x: extract_name_from_quotes(x.registrator.name).lower().startswith(search.lower()),
                    companies),
