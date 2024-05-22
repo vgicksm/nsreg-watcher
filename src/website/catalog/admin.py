@@ -3,37 +3,46 @@ from django.contrib.auth.models import User, Group
 
 from .models import Registrator, Price, TeamMember
 
+DATE_TIME_FORMAT = "%m/%d/%Y, %H:%M:%S"
+
 admin.site.empty_value_display = "Нет данных"
 
 
+@admin.register(TeamMember)
 class TeamMemberAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'title', 'contact', 'photo', 'sex')
-    search_fields = ('name', 'title', 'contact', 'sex')
-
-
-admin.site.register(TeamMember, TeamMemberAdmin)
+    list_display = ("id", "name", "title", "contact", "photo", "sex")
+    search_fields = ("name", "title", "contact", "sex")
 
 
 class PriceRegistratorInline(admin.TabularInline):
     model = Price
-    readonly_fields = ("last_change_at", "parse_at",)
-    fields = ("last_change_at", "parse_at", "domain",
-              "price_reg", "reg_status", "price_prolong", "prolong_status", "price_change", "change_status")
+    readonly_fields = ("last_change_at", "parse_at")
+    fields = (
+        "last_change_at",
+        "parse_at",
+        "domain",
+        "price_reg",
+        "reg_status",
+        "price_prolong",
+        "prolong_status",
+        "price_change",
+        "change_status",
+    )
     extra = 1
     min_num = 1
 
     @admin.display(description="Дата парсинга")
     def parse_at(self, obj):
-        return obj.parse.date.strftime("%m/%d/%Y, %H:%M:%S")
+        return obj.parse.date.strftime(DATE_TIME_FORMAT)
 
     @admin.display(description="Последнее изменение")
     def last_change_at(self, obj):
-        return obj.updated_at.strftime("%m/%d/%Y, %H:%M:%S")
+        return obj.updated_at.strftime(DATE_TIME_FORMAT)
 
 
 @admin.register(Registrator)
 class RegistratorAdmin(admin.ModelAdmin):
-    inlines = (PriceRegistratorInline, )
+    inlines = (PriceRegistratorInline,)
     list_display = ("name", "website", "city", "price")
     list_filter = ("city",)
 
