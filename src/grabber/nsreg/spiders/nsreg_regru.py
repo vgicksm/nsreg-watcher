@@ -21,13 +21,13 @@ class NsregRegruSpider(scrapy.Spider):
             path={
                 'price_reg': '/html/body/div[1]/div/div[4]/article/div/div[2]/div[4]/div/table/tbody/tr[1]/td[2]/abbr/strong/text()',
                 'price_prolong': '/html/body/div[1]/div/div[4]/article/div/div[2]/div[4]/div/table/tbody/tr[1]/td[2]/abbr/em/text()',
-                'price_change': '/html/body/div[1]/div/article/div[3]/div/div[2]'
+                'price_change': '/html/body/div[1]/div/article/section[2]/div[1]/article/section/ul/li[2]/strong[2]/text()'
             }
         )
 
     def parse_price_change(self, response):
         price_change = response.xpath(self.component.path['price_change']).get()
-        price_change = find_price(r"[\s\S]+(\d{3,}) руб.[\s\S]+", price_change)
+        price_change = find_price(r"([0-9]+)", price_change)
 
         item = NsregItem()
         item['name'] = "ООО «РЕГ.РУ»"
