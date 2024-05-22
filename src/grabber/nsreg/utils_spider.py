@@ -63,6 +63,7 @@ def moscow_price(self, response, re_pattern, name):
 
     return item
 
+
 # Exaple site
 # https://clustered.ru/#price
 def moscow_rich_price(self, response, re_pattern, name):
