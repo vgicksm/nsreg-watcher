@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# УДАЛИТЬ ПОСЛЕ РЕФАКТОРА СПАЙДЕРОВ
+# TODO: УДАЛИТЬ ПОСЛЕ РЕФАКТОРА СПАЙДЕРОВ
 from nsreg.items import NsregItem
 
 from nsreg.utils import find_price
@@ -65,8 +65,6 @@ def moscow_price(self, response, re_pattern, name):
 
 # Exaple site
 # https://clustered.ru/#price
-
-
 def moscow_rich_price(self, response, re_pattern, name):
     price_reg = response.xpath(
         '/html/body/div[1]/div[4]/div/div[2]/div[3]/div/div/div/div[2]/div/div/\

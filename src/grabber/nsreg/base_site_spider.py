@@ -11,8 +11,8 @@ EMPTY_PRICE = {
 }
 
 
-# Функция поиска цен в тексте, используя регулярное выражение
 def find_price(re_pattern, price):
+    """Функция поиска цен в тексте, используя регулярное выражение"""
     price = str(price).strip()
     if "бесплатн" in price.casefold():
         price = 0
@@ -30,8 +30,8 @@ def find_price(re_pattern, price):
     return price
 
 
-# Класс, реализующий основные компоненты паука для веб-скрапинга
 class BaseSpiderComponent:
+    """Класс, реализующий основные компоненты паука для веб-скрапинга"""
 
     def __init__(self, start_urls=None, allowed_domains=None, site_names=None, regex=None, path=None):
         # Разделение строк по запятым и преобразуем их в списки
@@ -50,8 +50,8 @@ class BaseSpiderComponent:
         self.regex = regex
         self.path = path
 
-    # Функция для обработки полученных данных
     def parse(self, response):
+        """Функция для обработки полученных данных"""
         # Поиск цены на регистрацию домена на веб-странице
         price_reg = response.xpath(self.path['price_reg']).get()
         price_reg = find_price(self.regex['price_reg'], price_reg)
