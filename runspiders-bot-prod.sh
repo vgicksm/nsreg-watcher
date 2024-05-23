@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ -f /home/ecodomen/ecodomen-dev/.env ]; then
+if [ -f /home/ecodomen/ecodomen-prod/.env ]; then
   export $(echo $(cat /home/ecodomen/ecodomen-prod/.env | sed 's/#.*//g'| xargs) | envsubst)
 fi
 
