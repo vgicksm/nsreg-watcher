@@ -15,10 +15,10 @@ TOPIC_SUPPORT_ID = int(os.environ["TOPIC_SUPPORT_ID"])
 
 if current_directory == '/home/ecodomen/ecodomen-dev/src/telegram_bot/':
     SPIDERS_SCRIPT_PATH = "compose/scrapy/scrapy-dev.sh"
-    SERVER = "DEV"
+    SERVER = "DEV-SERVER"
 else:
     SPIDERS_SCRIPT_PATH = "compose/scrapy/scrapy-prod.sh"
-    SERVER = "PROD"
+    SERVER = "PROD-SERVER"
 
 router = Router()
 bot = Bot(TOKEN, parse_mode="markdown")
