@@ -74,7 +74,8 @@ class Price(models.Model):
 class Parser(models.Model):
     id = models.BigAutoField(primary_key=True)
     registrator = models.ForeignKey(Registrator, on_delete=models.CASCADE)
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)  # Assuming the use of Django's default user model
+    # Assuming the use of Django's default user model
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     contributor_name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     comment = models.TextField()

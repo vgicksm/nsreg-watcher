@@ -26,9 +26,7 @@ bot_is_done = False
 
 
 def cut_log(log: str) -> str:
-    """
-    Make log shorter if len > 4000
-    """
+    """Make log shorter if len > 4000"""
     log = log.split("---SPLIT---")[-1]
     if len(log) > 4000:
         log = f"{log[:4001]}..."
@@ -37,7 +35,6 @@ def cut_log(log: str) -> str:
 
 @router.message(Command(commands=["start"]))
 async def command_start_handler(*args, **kwargs) -> None:
-
     await bot.send_message(
         chat_id=CHAT_ID,
         message_thread_id=TOPIC_SUPPORT_ID,
@@ -76,6 +73,7 @@ async def main() -> None:
     # Only start polling if the bot should still be active
     if not bot_is_done:
         await dp.start_polling(bot)
+
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
