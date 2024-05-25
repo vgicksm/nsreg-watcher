@@ -6,11 +6,19 @@ from aiogram.filters import Command
 import subprocess
 import os
 
+
+current_directory = os.getcwd()
 TOKEN = os.environ["BOT_TOKEN"]
 ERROR_LOGS_PATH = "logs/grabber_errors.log"
-SPIDERS_SCRIPT_PATH = "compose/scrapy/scrapy-dev.sh"
 CHAT_ID = os.environ["CHAT_ID"]
-TOPIC_SUPPORT_ID = int(os.environ["TOPIC_SUPPORT_ID"])  # 1435
+TOPIC_SUPPORT_ID = int(os.environ["TOPIC_SUPPORT_ID"]) 
+
+if current_directory == '/home/ecodomen/ecodomen-dev/src/telegram_bot/':
+    SPIDERS_SCRIPT_PATH = "compose/scrapy/scrapy-dev.sh"
+    SERVER = "DEV-SERVER"
+else:
+    SPIDERS_SCRIPT_PATH = "compose/scrapy/scrapy-prod.sh"
+    SERVER = "PROD-SERVER"
 
 router = Router()
 bot = Bot(TOKEN, parse_mode="markdown")
@@ -30,7 +38,7 @@ async def command_start_handler(*args, **kwargs) -> None:
     await bot.send_message(
         chat_id=CHAT_ID,
         message_thread_id=TOPIC_SUPPORT_ID,
-        text="🕷️🕷️🕷️ Запуск спайдеров 🕷️🕷️🕷️"
+        text=f"🕷️🕷️🕷️ Запуск спайдеров - {SERVER} 🕷️🕷️🕷️"
     )
     try:
         subprocess.run(["sh", f"{SPIDERS_SCRIPT_PATH}"], check=True)
