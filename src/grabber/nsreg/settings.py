@@ -13,7 +13,9 @@
 import os
 import time
 from pathlib import Path
+from dotenv import load_dotenv
 
+load_dotenv()
 os.environ["TZ"] = "UTC"
 time.tzset()
 
